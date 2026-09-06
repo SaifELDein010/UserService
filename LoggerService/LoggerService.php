@@ -2,7 +2,7 @@
 
 namespace LoogerService;
 
-require_once './LoogerService/LoggerInterface.php';
+require_once './LoggerService/LoggerInterface.php';
 use LoogerService\LoggerInterface;
 
 class LoggerService {
