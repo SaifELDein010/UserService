@@ -9,7 +9,7 @@ class LoggerService {
 
     private $loggerType;
 
-    public function setType(LoggerInterface\LoggerInterface $loggerType) {
+    public function setType(LoggerInterface\loggerInterface $loggerType) {
         $this->loggerType = $loggerType;
     }
 

@@ -2,7 +2,7 @@
 
 namespace LoogerService\LoggerInterface;
 
-interface LoggerInterface {
+interface loggerInterface {
     public function saveLog();
 }
 
