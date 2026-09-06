@@ -20,9 +20,9 @@ class RecordLog implements LoggerInterface\LoggerFormatInterface {
 
         $this->record = $data->username;
         $this->record .= self::DELIMITER;
-        $this->record .= $data->actionName;
+        $this->record .= $data->action;
         $this->record .= self::DELIMITER;
-        $this->record .= $data->datatime;
+        $this->record .= $data->datetime;
 
         return $this->record;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace LoogerService\LoggerInterface;
+namespace LoggerService\LoggerInterface;
 
-interface loggerInterface {
+interface LoggerInterface {
     public function saveLog();
 }
 
