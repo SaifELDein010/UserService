@@ -7,11 +7,14 @@
 require_once './LoggerService/LoggerFormat/LoggerType/RecordLog.php';
 require_once './LoggerService/LoggerSave/LoggerType/FileLogging.php';
 require_once './LoggerService/LoggerSave/LoggerType/DatabaseLogging.php';
+require_once './LoggerService/LoggerFormat/LoggerType/DatabaseLog.php';
 require_once __DIR__ . '/config/database.php';
 
 use LoggerService\LoggerFormat\LoggerType\Record;
 use LoogerService\LoggerType\FileLogging;
 use LoogerService\LoggerType\DatabaseLogging;
+use LoggerService\LoggerFormat\LoggerType\DatabaseLog;
+
 
 $dataLog = [
         "username" => "user", 
@@ -27,7 +30,9 @@ $record = $formatLog->format();
 $saveLog = new FileLogging\FileLogging($record);
 $saveLog->saveLog();
 
-$saveLogDB = new DatabaseLogging\DatabaseLogging($dataLog, $pdo);
+$formatDB = new DatabaseLog\DatabaseLog($dataLog, $pdo);
+
+$saveLogDB = new DatabaseLogging\DatabaseLogging($formatDB);
 $saveLogDB->saveLog();
 
 ?>

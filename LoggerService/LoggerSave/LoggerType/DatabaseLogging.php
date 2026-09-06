@@ -3,33 +3,23 @@
 namespace LoogerService\LoggerType\DatabaseLogging;
 
 require_once './LoggerService/LoggerSave/LoggerInterface.php';
-// require_once __DIR__ . '/config/database.php';
+require_once './LoggerService/LoggerFormat/LoggerFormatInterface.php';
 
 use LoggerService\LoggerInterface;
-use PDO;
-
+use LoggerService\LoggerFormat;
 
 class DatabaseLogging implements LoggerInterface\LoggerInterface {
 
-    private $record; 
-    private PDO $pdo;
+    private LoggerFormat\LoggerInterface\LoggerFormatInterface $databaseRecord;
 
-    public function __construct(string $record, PDO $pdo) {
-        $this->record = json_decode($record, true); 
-        $this->pdo = $pdo;
+    public function __construct(
+        LoggerFormat\LoggerInterface\LoggerFormatInterface $databaseRecord) {
+        $this->databaseRecord = $databaseRecord;
     }
 
     public function saveLog() {
 
-        $stmt = $this->pdo->prepare(
-            "INSERT INTO logs (username, action, created_at) VALUES (?, ?, ?)"
-        );
-
-        $stmt->execute([
-            $this->record['username'],
-            $this->record['action'],
-            $this->record['datetime']
-        ]);
+        $this->databaseRecord->format();
 
     }
 
