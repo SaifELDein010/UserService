@@ -1,0 +1,22 @@
+<?php
+
+namespace LoogerService;
+
+require_once './LoogerService/LoggerInterface.php';
+use LoogerService\LoggerInterface;
+
+class LoggerService {
+
+    private $loggerType;
+
+    public function setType(LoggerInterface\LoggerInterface $loggerType) {
+        $this->loggerType = $loggerType;
+    }
+
+    public function get() {
+        return $this->loggerType->saveLog();
+    }
+
+}
+
+?>
