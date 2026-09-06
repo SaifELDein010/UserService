@@ -15,7 +15,7 @@ use LoogerService\LoggerType\DatabaseLogging;
 
 $dataLog = [
         "username" => "user", 
-        "action" => "take action", 
+        "action" => "User reqister successfully", 
         "datetime" => date('Y-m-d H:i:s')
     ];
 

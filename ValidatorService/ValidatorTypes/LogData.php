@@ -18,7 +18,7 @@ class LogData implements ValidatorInterface\validatorInterface {
 
         if($data->username != "user"){
             return false;
-        } else if($data->actionName != "take action"){
+        } else if($data->actionName != "User reqister successfully"){
             return false;
         } else {
             return true;
