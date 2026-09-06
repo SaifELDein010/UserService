@@ -15,7 +15,7 @@ class GeneratePassword {
     }
 
     public function generatePassword(int $minLength = 8, int $maxLength = 15) {
-        $this->faker->password($minLength, $maxLength);
+        return $this->faker->password($minLength, $maxLength);
     }
 
 }

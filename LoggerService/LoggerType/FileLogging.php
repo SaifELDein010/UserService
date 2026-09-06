@@ -4,13 +4,12 @@ namespace LoogerService\LoggerType\FileLogging;
 
 require_once './LoogerService/LoggerInterface.php';
 use LoogerService\LoggerInterface;
-use Override;
 
 class FileLogging implements LoggerInterface\LoggerInterface {
 
     private string $logData;
     private string $record; 
-     private const DELIMITER = '#$|$#';
+    private const DELIMITER = '#$|$#';
 
     public function __construct(string $logData) {
         $this->logData = $logData; 
