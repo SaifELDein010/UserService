@@ -3,7 +3,7 @@
 namespace ValidatorService\ValidatorInterface;
 
 interface ValidatorInterface {
-    public function validatorInterface();
+    public function validatorInterface():bool;
 }
 
 ?>
