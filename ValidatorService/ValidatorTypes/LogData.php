@@ -4,6 +4,7 @@ namespace ValidatorService\ValidatorTypes\LogData;
 
 require_once './ValidatorService/ValidatorInterface.php';
 use ValidatorService\ValidatorInterface;
+use DateTime;
 
 class LogData implements ValidatorInterface\validatorInterface {
 
@@ -16,16 +17,21 @@ class LogData implements ValidatorInterface\validatorInterface {
     private function validateData() {
         $data = json_decode($this->logData);
 
-        if($data->username != "user"){
+        $datetime = DateTime::createFromFormat('Y-m-d H:i:s', $data->datetime);
+
+        if(gettype($data->username) != "string"){
             return false;
-        } else if($data->actionName != "User reqister successfully"){
+        } else if(gettype($data->action) != "string"){
             return false;
-        } else {
-            return true;
+        } else if(!
+            ($datetime && $datetime->format('Y-m-d H:i:s') === ($data->datetime))) {
+            return false;
         }
 
+        return true;
+
     }
-    public function validatorInterface():bool {
+    public function validated():bool {
         return $this->validateData();
     }
 

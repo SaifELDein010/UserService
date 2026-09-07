@@ -8,12 +8,14 @@ require_once './LoggerService/LoggerFormat/LoggerType/RecordLog.php';
 require_once './LoggerService/LoggerSave/LoggerType/FileLogging.php';
 require_once './LoggerService/LoggerSave/LoggerType/DatabaseLogging.php';
 require_once './LoggerService/LoggerFormat/LoggerType/DatabaseLog.php';
+require_once './ValidatorService/ValidatorTypes/LogData.php';
 require_once __DIR__ . '/config/database.php';
 
 use LoggerService\LoggerFormat\LoggerType\Record;
 use LoogerService\LoggerType\FileLogging;
 use LoogerService\LoggerType\DatabaseLogging;
 use LoggerService\LoggerFormat\LoggerType\DatabaseLog;
+use ValidatorService\ValidatorTypes\LogData;
 
 
 $dataLog = [
@@ -23,6 +25,8 @@ $dataLog = [
     ];
 
 $dataLog = json_encode($dataLog);
+$isValidData = new LogData\LogData($dataLog);
+echo "\n  >> ".$isValidData->validated()." \n";
 
 $formatLog = new Record\RecordLog($dataLog);
 $record = $formatLog->format();
